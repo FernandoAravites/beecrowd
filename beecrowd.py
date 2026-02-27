@@ -299,23 +299,42 @@ def exercicio_1074():
 
     for i in range(n):
 
-        if i == 0:
+        x = int(input())
+
+        if x == 0:
 
             print("NULL")
         else:
-            if i % 2 ==0:
+            if x % 2 ==0:
 
                 texto = "EVEN"
             else:
                 
                 texto = "ODD"
-            if i > 0:
+            if x > 0:
 
                 texto += " POSITIVE"
-            if i < 0:
+            else:
 
                 texto += " NEGATIVE"
             
             print(texto)
 
-exercicio_1074()
+def exercicio_1075():
+
+    n = int(input())
+
+    for i in range(1, 10001):
+
+        if i % n == 2:
+            print(i)
+
+def exercicio_1078():
+
+    n = int(input())
+
+    for i in range(1, 11):
+
+        produto = n * i
+
+        print(f"{i} x {n} = {produto}")
