@@ -1,287 +1,321 @@
 import os
 import math
-
+import random
 
 def limpar():
 
     os.system('cls' if os.name == 'nt' else 'clear')
 
-
 limpar()
 
-def exercicio_1021():
-
-    valor = float(input())
-    centavos = int(round(valor * 100))
-
-    notas_centavos = [10000, 5000, 2000, 1000, 500, 200, 100, 50, 25, 10, 5, 1]
-
-    print("NOTAS:")
-
-    for n in range(0,6):
-
-        quantidade = centavos // notas_centavos[n]
-        print(f"{quantidade} nota (s) de R$ {notas_centavos[n]/100:.2f}")
-        centavos = centavos % notas_centavos[n]
-
-    print("NOTAS:")
-
-    for n in range(6, 12):
-
-        quantidade = centavos // notas_centavos[n]
-        print(f"{quantidade} moeda (s) de R$ {notas_centavos[n]/100:.2f}")
-        centavos = centavos % notas_centavos[n]
-
-def exercicio_1035():
-
-    a, b, c, d = map(int, input().split())
-
-    condicao1 = b > c
-    condicao2 = d > a
-    condicao3 = (c + d) > (a + b)
-    condicao4 = c > 0 and d > 0
-    condicao5 = (a % 2) == 0
-
-    if condicao1 and condicao2 and condicao3 and condicao4 and condicao5:
-
-        print("Valores aceitos")
-    else:
-        print("Valores nao aceitos")
-
-def exercicio_1036():
-
-    a, b, c = map(float, input().split())
-    delta = (b ** 2) - (4 * a * c)
-
-    if a == 0 or delta < 0:
-
-        print("Impossivel calcular")
+def exercicio_1050():
     
-    else:
+    municipios = {
 
-        r1 = (-b + math.sqrt(delta))/(2 * a)
-        r2 = (-b - math.sqrt(delta))/(2 * a)
-
-        print(f"""R1 = {r1:.5f}\nR2 = {r2:.5f}""")
-
-def exercicio_1037():
-
-    valor = float(input())
-
-    if 0 <= valor <= 25:
-        print("Intervalo [0,25]")
-    elif 25 < valor <= 50:
-        print("Intervalo (25,50]")
-    elif 50 < valor <= 75:
-        print("Intervalo (50,75]")
-    elif 75 < valor <= 100:
-        print("Intervalo (75,100]")
-    else:
-        print("Fora de intervalo")
-
-def exercicio_1038():
-
-    codigo, quantidade = map(int, input().split())
-    preco = [4.0, 4.5, 5.0, 2.0, 1.5]
-    
-    print(f"Total: R$ {(quantidade * preco[codigo - 1]):.2f}")
-
-def exercicio_1040():
-
-    n1, n2, n3, n4 = map(float, input().split())
-    media = ((n1 * 2) + (n2 * 3) + (n3 * 4) + (n4))/(2 + 3 + 4 + 1)
-
-    print(f"Media: {media:.1f}")
-
-    if media >= 7:
-
-        print("Aluno aprovado.")
-    elif media < 5:
-
-        print("Aluno reprovado.")
-    elif 5 <= media <= 6.9:
-        
-        print("Aluno em exame.")
-        n_exame = float(input())
-        print(f"Nota do exame: {n_exame:.1f}")
-        media_final = (media + n_exame)/2
-        
-        if media_final >= 5:
-            
-            print(f"Aluno aprovado.\nMedia final: {media_final:.1f}")
-        else:
-            print(f"Aluno reprovado.\nMedia final: {media_final:.1f}")
-
-def exercicio_1041():
-
-    x, y = map(float, input().split())
-
-    if x == 0 and y == 0:
-        print("Origem")
-
-    elif y == 0:
-        print("Eixo X")
-
-    elif x == 0:
-        print("Eixo Y")
-
-    elif x > 0 and y > 0:
-        print("Q1")
-    
-    elif x < 0 and y > 0:
-        print("Q2")
-
-    elif x < 0 and y < 0:
-        print("Q3")
-
-    elif x > 0 and y < 0:
-        print("Q4")
-
-def exercicio_1042():
-
-    a, b, c = map(int, input().split())
-
-    lista_original = [a, b, c]
-    lista_ordenados = sorted(lista_original)
-
-    for numero in lista_ordenados:
-        print(numero)
-    
-    print()
-
-    for numero in lista_original:
-        print(numero)
-
-def exercicio_1043():
-
-    a, b, c = map(float, input().split())
-
-    if a < b + c and b < a + c and c < a + b:
-        perimetro = a + b + c
-        print(f"Perimetro = {perimetro:.1f}")
-
-    else:
-        area = ((a + b) * c)/2
-        print(f"Area = {area:.1f}")
-
-def exercicio_1044():
-    
-    a, b = map(int, input().split())
-
-    if a % b == 0 or b % a == 0:
-        print("São Multiplos")
-    else:
-        print("Não são Multiplos")
-
-def exercicio_1045():
-
-    a, b, c = map(int, input().split())
-
-    if a > 0 and b > 0 and c > 0:
-        lados = [a, b, c]
-        lados.sort(reverse = True)
-
-        if a >= (b + c):
-            print("NAO FORMA TRIANGULO")
-        elif (a ** 2) == ((b ** 2) + (c ** 2)):
-            print("TRIANGULO RETANGULO")
-        elif (a ** 2) > ((b ** 2) + (c ** 2)):
-            print("TRIAGULO OBTUSANGULO")
-        elif (a ** 2) < ((b ** 2) + (c ** 2)):
-            print("TRIANGULO ACUTANGULO")
-        elif a == b == c:
-            print("TRIAGULO EQUILATERO")
-        elif a == b or b == c:
-            print("TRIANGULO ISOSCELES")
-
-def exercicio_1046():
-
-    inicio, fim = map(int, input().split())
-
-    if fim > inicio:
-        
-        #HORA FINAL > HORA INICIAL
-        duracao = fim - inicio
-    else:
-        #HORA FINAL <= HORA INICIAL
-        duracao = (24 - inicio) + fim
-
-    print(f"O JOGO DUROU {duracao} HORA(S)")
-
-def exercicio_1047():
-
-    h_inicio, min_inicio, h_fim, min_fim = map(int, input().split())
-
-    inicio_total = h_inicio * 60 + min_inicio
-    fim_total = h_fim * 60 + min_fim
-
-    duracao = fim_total - inicio_total
-
-    if duracao <= 0:
-        duracao += 24 * 60
-
-    duracao_horas = duracao // 60
-    duracao_min = duracao % 60
-
-    print(f"O JOGO DUROU {duracao_horas} HORA(S) E {duracao_min} MINUTO(S)")
-
-def exercicio_1048():
-
-    salario_inicial = float(input())
-
-    if salario_inicial <= 400:
-
-        percentual = 15
-
-    elif 400 < salario_inicial <= 800:
-
-        percentual = 12
-    elif 800 < salario_inicial <= 1200:
-
-        percentual = 10
-    elif 1200 < salario_inicial <= 2000:
-
-        percentual = 7
-    
-    elif salario_inicial > 2000:
-
-        percentual = 4
-
-    reajuste = salario_inicial * (percentual/100)
-    salario = salario_inicial + reajuste
-    print(f"""Novo salario: {salario:.2f}\nReajuste ganho: {reajuste:.2f}\nEm percentual: {percentual} %""")
-
-exercicio_1048()
-
-def exercicio_1049():
-
-    animais = {
-        "vertebrado": {
-            "ave": {
-                "carnivoro": "aguia",
-                "onivoro": "pomba"
-            },
-            "mamifero": {
-                "onivoro": "homem",
-                "herbivoro": "vaca"
-            }
-        },
-        "invertebrado": {
-            "inseto": {
-                "hematofago": "pulga",
-                "herbivoro": "lagarta"
-            },
-            "anelideo": {
-                "hematofago": "sanguessuga",
-                "onivoro": "minhoca"
-            }
-        }
+        61: "Brasilia",
+        71: "Salvador",
+        11: "Sao Paulo",
+        21: "Rio de Janeiro",
+        32: "Juiz de Fora",
+        19: "Campinas",
+        27: "Vitoria",
+        31: "Belo Horizonte"
     }
 
-    estrutura = input()
-    classe = input()
-    alimentacao = input()
+    ddd = int(input())
 
-    print(animais[estrutura][classe][alimentacao])
+    if ddd in municipios:
+        
+        print(f"{municipios[ddd]}")
+    else:
 
-exercicio_1049()
+        print("DDD nao cadastrado")
+
+def exercicio_1051():
+
+    salario = float(input())
+
+    if salario <= 2000.00:
+
+        print("Isento")
+
+    else:
+
+        imposto = 0.0
+        salario_dedutivo = salario
+
+        if salario_dedutivo > 4500.00:
+
+            imposto += (salario_dedutivo - 4500.00) * 0.28
+            salario_dedutivo = 4500.00
+        if salario_dedutivo > 3000.00:
+            
+            imposto += (salario_dedutivo - 3000.00) * 0.18
+            salario_dedutivo = 3000.00
+        if salario_dedutivo > 2000.00:
+
+            imposto += (salario_dedutivo - 2000.00) * 0.08
+
+        print(f"R$ {imposto:.2f}")
+
+def exercicio_1052():
+
+    mes = int(input())
+
+    meses = {
+
+        1: "January",
+        2: "February",
+        3: "March",
+        4: "April",
+        5: "May",
+        6: "June",
+        7: "July",
+        8: "August",
+        9: "September",
+        10: "October",
+        11: "November",
+        12: "December"
+    }
+
+    print(f"{meses[mes]}")
+
+def exercicio_1059():
+
+    i = 0
+
+    while i < 100:
+
+        i += 1
+
+        if i % 2 == 0:
+
+            print(i)
+
+def exercicio_1060():
+
+    a = float(input())
+    b =float(input())
+    c = float(input())
+    d = float(input())
+    e = float(input())
+    f = float(input())
+
+    quantidade = 0
+
+    lista = [a, b, c, d, e, f]
+
+    for i in lista:
+
+        if i > 0:
+
+            quantidade += 1
+    
+    print(f"{quantidade} valores positivos")
+
+def exercicio_1061():
+
+
+    dia_inicio = int(input().split()[1])
+    h_inicio, m_inicio, s_inicio = map(int, input().split(" : "))
+
+    dia_fim = int(input().split()[1])
+    h_fim, m_fim, s_fim = map(int, input().split(" : "))
+
+    total_inicio = dia_inicio * 86400 + h_inicio * 3600 + m_inicio * 60 + s_inicio
+    total_final = dia_fim * 86400 + h_fim * 3600 + m_fim * 60 + s_fim
+
+    dias = (total_final - total_inicio) // 86400
+    resto = (total_final - total_inicio) % 86400
+
+    horas = resto  // 3600
+    resto = resto % 3600
+
+    minutos = resto // 60
+    
+    segundos = resto % 60
+
+    print(f"{dias} dia(s)\n{horas} hora(s)\n{minutos} minuto(s)\n{segundos} segundo(s)")
+
+def exercicio_1064():
+
+    a = float(input())
+    b = float(input())
+    c = float(input())
+    d= float(input())
+    e= float(input())
+    f= float(input())
+
+    quantidade = 0
+    soma_positivo = 0
+
+    lista = [a, b, c, d, e, f]
+
+    for i in lista:
+
+        if i > 0:
+
+            quantidade += 1
+            soma_positivo += i
+    
+    media = soma_positivo / quantidade
+
+    print(f"{quantidade} valores positivos\n{media:.1f}")
+
+def exercicio_1065():
+
+    a = float(input())
+    b = float(input())
+    c = float(input())
+    d= float(input())
+    e= float(input())
+
+    quantidade = 0
+
+    lista = [a, b, c, d, e]
+
+    for i in lista:
+
+        if i % 2 == 0:
+
+            quantidade += 1
+    
+    print(f"{quantidade} valores pares")
+
+def exercicio_1066():
+
+    a = float(input())
+    b = float(input())
+    c = float(input())
+    d= float(input())
+    e= float(input())
+
+    pares = 0
+    impares = 0
+    positivos = 0
+    negativos = 0
+
+    lista = [a, b, c, d, e]
+
+    for i in lista:
+
+        if i % 2 == 0:
+
+            pares += 1
+        else:
+
+            impares += 1
+
+        if i > 0:
+
+            positivos += 1
+        if i < 0:
+
+            negativos += 1
+    
+    print(f"""{pares} valor(es) par(es)
+{impares} valor(es) impar(es)
+{positivos} valor(es) positivo(s)
+{negativos} valor(es) negativo(s)""")
+
+def exercicio_1067():
+
+    x = int(input())
+
+    for i in range(1, x + 1, 1):
+
+        if i % 2 == 1:
+            print(i)
+
+def exercicio_1070():
+    
+    x = int(input())
+
+    for i in range(x, x + 12):
+
+        if i % 2 == 1:
+
+            print(i)
+
+def exercicio_1071():
+    
+    x = int(input())
+    y = int(input())
+
+    soma = 0
+    lim_i = x
+    lim_f = y
+
+    if x > y:
+
+        lim_i = y
+        lim_f = x
+
+    for i in range(lim_i + 1, lim_f):
+
+        if i % 2 == 1:
+            soma += i
+    
+    print(soma)
+
+def exercicio_1072():
+
+    n = int(input())
+
+    dentro = 0
+    fora = 0
+
+    for _ in range(n):
+        
+        x = int(input())
+        
+        if 10 <= x <= 20:
+            dentro += 1
+        else:
+            fora += 1
+            
+    print(f"{dentro} in")
+    print(f"{fora} out")
+
+def exercicio_1073():
+
+    n = int(input())
+
+    o_par = 0
+    o_quadrado = 0
+
+    for i in range(1, n + 1):
+
+        if i % 2 == 0:
+
+            o_par = i
+            o_quadrado = i ** 2
+
+            print(f"{o_par}^2 = {o_quadrado}")
+    
+def exercicio_1074():
+
+    n = int(input())
+
+    for i in range(n):
+
+        if i == 0:
+
+            print("NULL")
+        else:
+            if i % 2 ==0:
+
+                texto = "EVEN"
+            else:
+                
+                texto = "ODD"
+            if i > 0:
+
+                texto += " POSITIVE"
+            if i < 0:
+
+                texto += " NEGATIVE"
+            
+            print(texto)
+
+exercicio_1074()
