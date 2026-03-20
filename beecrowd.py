@@ -571,6 +571,7 @@ def exercicio_1059():
 
             print(i)
 
+
 def exercicio_1060():
 
     a = float(input())
@@ -1450,11 +1451,11 @@ def exercicio_1435():
 
     def contruirMatriz(n):
 
-        #cria uma matriz quadarada só com o 0
+        # cria uma matriz quadarada só com o 0
         matriz = [[0 for _ in range(n)] for _ in range(n)]
         #[[0 for _ in range(n)] gera [0, 0, 0], for _ in range(n) faz denovo em outra linha
 
-        #preenche a matriz com valores em relação a distância até a borda
+        # preenche a matriz com valores em relação a distância até a borda
         for i in range(n):
             for j in range(n):
                 distancia = min(i, j, n -1-i, n-1-j) + 1
@@ -1473,9 +1474,9 @@ def exercicio_1435():
             linha = []
             
             for j in range(n):
-                #formata com o campo de tamnho 3 justificado à direita
+                # formata com o campo de tamnho 3 justificado à direita
                 linha.append(f"{matriz[i][j]:3d}")
-            #coloca espaço entre os elemntos, não no começo ou fim
+            # coloca espaço entre os elemntos, não no começo ou fim
             print(" ".join(linha))
         print()
 
@@ -1494,5 +1495,23 @@ def exercicio_1435():
 
     if __name__ == "__main__":
         exercicio_1435_main()
+def exercicioFizzBuzz():
 
-exercicio_1435()
+    # multiplo de 3 = fizz
+    # multiplo de 5 = buzz
+    # multiplo 15 = fizzbuzz
+
+    for i in range(1, int(input()) + 1):
+
+        if i % 3 and i % 5:
+            print("FizzBuzz")
+        
+        elif i % 3 == 0:
+            print("Fizz")
+        
+        elif i % 5 == 0:
+            print("Buzz")
+        
+        else:
+            print(i)
+
