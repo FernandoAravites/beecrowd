@@ -1514,4 +1514,340 @@ def exercicioFizzBuzz():
         
         else:
             print(i)
+import sys
 
+
+def exericio_1478():
+
+    def construir_e_imprimir(n):
+        # Geramos a linha e já imprimimos para economizar memória
+        for i in range(n):
+            linha = []
+            for j in range(n):
+                valor = abs(i - j) + 1
+                # {:3d} garante o campo de 3 caracteres alinhado à direita
+                linha.append("{:3d}".format(valor))
+            
+            # Junta com um espaço e imprime a linha
+            print(" ".join(linha))
+        # Imprime a linha em branco obrigatória após cada matriz
+        print()
+
+    def main():
+        # Usando sys.stdin para evitar problemas de performance e EOF
+        input_data = sys.stdin.read().split()
+        
+        for valor in input_data:
+            n = int(valor)
+            if n == 0:
+                break
+            construir_e_imprimir(n)
+
+    if __name__ == "__main__":
+        main()
+
+def exercicio_1534():
+
+    import sys
+
+    def resolver_1534():
+        # Lê todas as entradas disponíveis no arquivo/terminal
+        entrada = sys.stdin.read().split()
+        
+        for n_str in entrada:
+            n = int(n_str)
+            
+            for i in range(n):
+                linha = []
+                for j in range(n):
+                    # A secundária tem prioridade sobre a principal
+                    if i + j == n - 1:
+                        linha.append("2")
+                    elif i == j:
+                        linha.append("1")
+                    else:
+                        linha.append("3")
+                
+                # No 1534, os números são grudados, sem espaços
+                print("".join(linha))
+
+    if __name__ == "__main__":
+        resolver_1534()
+
+def exercicio_1541():
+
+    import math as m
+
+    while True:
+        
+        entrada = input().split()
+
+        if entrada[0] == '0':
+            break
+
+        a, b, c = int(entrada[0]), int(entrada[1]), int(entrada[2])
+        areaTerreno = (100 / c) * (a * b)
+
+        ladoTerreno = int(m.sqrt(areaTerreno))
+
+        print(ladoTerreno)
+
+def exercicio_1557():
+
+    import sys
+
+    def resolver_1557():
+        entrada = sys.stdin.read().split()
+        
+        for n_str in entrada:
+            n = int(n_str)
+
+            if n == 0:
+                break
+
+            maiorNumero = 2 ** (n + n - 2)
+            largura = len(str(maiorNumero))
+            
+            for i in range(n):
+                linha = []
+                for j in range(n):
+                    valor = 2**(i + j)
+                    item = f"{valor:{largura}d}"
+                    linha.append(item)
+
+                print(" ".join(linha))
+            print()
+    if __name__ == "__main__":
+        resolver_1557()
+
+def exercicio_1564():
+
+    while True:
+            try:
+
+                n = int(input())
+
+                if n == 0:
+                    print("vai ter copa!")
+                
+                else:
+                    print("vai ter duas!")
+
+            except EOFError:
+                break
+
+def exercicio_1024():
+
+    import math
+
+    def resolver():
+        try:
+            # Lê a quantidade de casos de teste
+            n = int(input())
+        except EOFError:
+            return
+
+        for _ in range(n):
+            m = input()
+            
+            # --- PRIMEIRA PASSADA ---
+            # Desloca letras em +3 na tabela ASCII
+            m_passada1 = ""
+            for char in m:
+                if char.isalpha():
+                    m_passada1 += chr(ord(char) + 3)
+                else:
+                    m_passada1 += char
+            
+            # --- SEGUNDA PASSADA ---
+            # Inverte a string
+            m_passada2 = m_passada1[::-1]
+            
+            # --- TERCEIRA PASSADA ---
+            # Desloca -1 da metade em diante
+            metade = len(m_passada2) // 2
+            
+            parte1 = m_passada2[:metade]
+            parte2 = ""
+            
+            for i in range(metade, len(m_passada2)):
+                parte2 += chr(ord(m_passada2[i]) - 1)
+                
+            print(parte1 + parte2)
+
+    resolver()
+
+def exercicio_1847():
+    
+    t1, t2, t3 = map(int, input().split())
+
+    if t1 > t2: # DESCEU DO 1° PRO 2°
+
+        if t2 < t3 or t2 == t3: # SUBIU DO 2° PRO 3° OU CTE
+            print(":)")
+        
+        elif t2 > t3: # DESCEU DO 2° PRO 3° 
+            
+            if (t1 - t2) > (t2 - t3): # DESCEU MAIS DO 1° PRO 2° 
+                print(":)")
+            
+            elif (t1 - t2) <= (t2 - t3): # DESCEU MAIS DO 2° PRO 3°
+                print(":(")
+    
+    elif t1 < t2:
+
+        if t2 > t3 or t2 == t3:
+            print(":(")
+        
+        elif t2 < t3:
+
+            if (t2 - t1) > (t3 - t2):
+                print(":(")
+            
+            elif (t2 - t1) <= (t3 - t2):
+                print(":)")
+    else: # CTE, mas...
+
+        if t2 < t3:
+            print(":)")
+        
+        else:
+            print(":(")
+
+def exercicio_1848():
+    for _ in range(3):
+        soma = 0
+
+        while True:
+            try:
+                entrada = input()
+                
+                if entrada == "caw caw":
+                    print(soma)
+                    break
+
+                else:
+                    binario = entrada.replace('*', '1').replace('-', '0')
+                    soma += int(binario, 2)
+
+            except EOFError:
+                return
+
+def exercicio_1858():
+
+    n = int(input())
+
+    entrada = input().split()
+
+    lista = []
+
+    for i in range(n):
+
+        valor = int(entrada[i])
+        lista.append(valor)
+
+    print(lista.index(min(lista)) + 1)
+
+def exercicio_1864():
+
+    frase = "life is not a problem to be solved"
+    fraseLista = [letra.upper() for letra in frase]
+
+    resultado = ''
+
+    for i in range(int(input())):
+
+        resultado += str(fraseLista[i])
+    
+    print(resultado)
+
+def exercicio_1865():
+
+    for i in range(int(input())):
+
+        p = input()
+
+        if 'Thor' in p:
+            print("Y")
+
+        else:
+            print("N")
+
+def exercicio_1866():
+
+    for i in range(int(input())):
+        s = 0
+        adicional = 1
+
+        for j in range(int(input())):
+            s += adicional
+            adicional *= (-1)
+        
+        print(s)
+
+def exercicio_1914():
+
+    for i in range(int(input())):
+
+        nome1, esolha1, nome2, escolha2 = input().split()
+        valor1, valor2 = map(int, input().split())
+
+        soma = valor1 + valor2
+        resultado = 'PAR' if soma % 2 == 0 else 'IMPAR'
+
+        if esolha1 == resultado:
+            print(nome1)
+        
+        else:
+            print(nome2)
+        
+def exercicio_1924():
+
+    def eh_triangulo(a, b, c):
+        if (a + b > c) and (a + c > b) and (b + c > a):
+            return True
+        
+        return False
+
+    a, b, c, d = map(int, input().split())
+
+
+    if eh_triangulo(a, b, c) or eh_triangulo(a, b, d) or \
+    eh_triangulo(a, c, d) or eh_triangulo(b, c, d):
+        print("S")
+        
+    else:
+        print("N")
+    
+def exercicio_1930():
+
+    t1, t2, t3, t4 = map(int, input().split())
+    tomadasTotais = t1 + t2 + t3 + t4 - 3
+
+    print(tomadasTotais)
+
+def exercicio_1933():
+
+    c1, c2 = map(int, input().split())
+
+    print(max(c1, c2))
+
+def exercicio_1957():
+
+    numero = int(input())
+
+    print(f"{numero:X}")
+
+def exercicio_1958():
+
+    try:
+    
+        linha = input()
+        x = float(linha)
+
+        print(f"{x:+.4E}")
+    
+    except EOFError:
+        pass
+    
+exercicio_1958()
